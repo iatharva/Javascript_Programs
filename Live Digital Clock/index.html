@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live clock</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function showTime(){
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            var meridian = "AM";
+        
+            m = checkTime(m);
+            s = checkTime(s);
+            if (h >= 12){
+		     meridian = "PM";
+             }
+             if (h > 12)
+	        {
+		      h1 = h - 12;
+	        }else{
+                h1=h;
+            }
+ 
+            document.getElementById('clock1').innerHTML = h1 + ':' + m + ':' + s + " " + meridian;
+            document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+            setTimeout(showTime,500);
+        }
+        function checkTime(i) {
+            if (i<10) { i="0"+i };
+            return i;
+        }
+    </script>
+</head>
+<body onload="showTime()">
+    <h1 class="title">Hello World at</h1>
+    <div id="clock1" class="clock1">Time</div>
+    <br><h4>OR</h4>
+    <div id="clock" class="clock">Time</div>
+</body>
+</html>
